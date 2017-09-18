@@ -1,0 +1,12 @@
+@import "./variable.scss";
+
+html, 
+body {
+  height: 100%;
+}
+
+#app {
+  display: none;
+  height: 100%;
+  background-color: $bgcolor;
+}
