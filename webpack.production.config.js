@@ -1,7 +1,8 @@
 const path = require('path')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -43,10 +44,21 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html')
+      filename: 'index.html',
+      template: path.resolve(__dirname, 'src', 'index.html'),
+      inject: 'body'
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin("style.css")
+    new ExtractTextPlugin("style.css"),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, 'public')
+      }
+    ], {
+        ignore: [],
+        copyUnmodified: true,
+        debug: "debug"
+      })
   ]
 };
