@@ -22,5 +22,8 @@ $.get('/data/abc.json').then((data) => {
   log(data)
 })
 
+let cc = 12;
+
+
 $fadeIn('#app')
 
