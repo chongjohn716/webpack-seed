@@ -5,8 +5,7 @@ const library = '[name].[hash]'
 
 module.exports = {
   entry: {
-    vendors: ['lodash'],
-    "vendors.css": ['minireset.css']
+    vendors: ['lodash', 'minireset.css']
   },
 
   output: {
@@ -42,16 +41,16 @@ module.exports = {
       }
     ),
 
-    // 代码 JS 压缩
-    new webpack.optimize.UglifyJsPlugin({
-      warnings: false,
-      compress: {
-        join_vars: true,
-        warnings: false,
-      },
-      toplevel: false,
-      ie8: false
-    }),
+    // 代码 JS 压缩 TODO: 不能压缩 css 文件
+    // new webpack.optimize.UglifyJsPlugin({
+    //   warnings: false,
+    //   compress: {
+    //     join_vars: true,
+    //     warnings: false,
+    //   },
+    //   toplevel: false,
+    //   ie8: false
+    // }),
 
     new webpack.DllPlugin({
       path: path.resolve(__dirname, 'dist', 'manifest.[hash].json'),
