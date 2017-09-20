@@ -89,19 +89,9 @@ module.exports = {
     // 分离CSS和JS文件
     new ExtractTextPlugin("[name].[hash].css"),
 
-    // 将依赖单独打包
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module) {
-        // 该配置假定你引入的 bootstrap 存在于 node_modules 目录中
-        return module.context && module.context.indexOf('node_modules') !== -1;
-      }
-    }),
-
-    // 
-    new webpack.optimize.CommonsChunkPlugin({
-      //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
-      name: 'manifest'
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./dist/vendors-manifest.json')
     }),
 
     // 删除文件

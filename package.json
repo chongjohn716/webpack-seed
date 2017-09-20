@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server --content-base public/ --hot --inline --port 8000",
     "start": "webpack-dev-server --content-base public/ --hot --open --inline --port 8000",
     "build": "webpack --config ./webpack.production.config.js --progress",
+    "builddll": "webpack --config ./webpack.dll.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
