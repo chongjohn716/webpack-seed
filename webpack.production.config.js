@@ -75,13 +75,14 @@ module.exports = {
 
     // 将打包代码插入到 html 模板中
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: 'index.jsp',
+      favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
       template: path.resolve(__dirname, 'src', 'index.html'),
       inject: 'body',
       //压缩HTML文件
       minify: {
         removeComments: true, //移除HTML中的注释
-        collapseWhitespace: false //删除空白符与换行符
+        collapseWhitespace: true //删除空白符与换行符
       }
     }),
 
@@ -107,9 +108,10 @@ module.exports = {
     new CleanWebpackPlugin(
       //匹配删除的文件
       [
-        'dist/app.*.js',
         'dist/app.*.css',
+        'dist/app.*.js',
         'dist/manifest.*.js',
+        'dist/vendor.*.css',
         'dist/vendor.*.js'
       ],
       {

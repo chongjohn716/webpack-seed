@@ -5,10 +5,11 @@ import utils from './js/utils'
 import $ from 'jquery'
 import $fadeIn from '$fadeIn'
 import log from 'log'
+import array from 'lodash/array'
 
-const appEl = document.getElementById('app');
+const appEl = document.getElementById('app')
 
-let div = document.createElement('div');
+let div = document.createElement('div')
 
 div.appendChild(document.createTextNode('Webpack Seed'))
 
@@ -22,8 +23,4 @@ $.get('/data/abc.json').then((data) => {
   log(data)
 })
 
-let cc = 12;
-
-
 $fadeIn('#app')
-
